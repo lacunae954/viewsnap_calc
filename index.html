@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>viewsnap calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <p>note: you can only viewsnap in one axis at a time.</p>
+    <p>the pitch is the up/down angle and is the first angle in cl_showpos. the yaw is the left/right angle and is the second angle in cl_showpos</p>
+    <p>sometimes it's useful to break up a viewsnaps into several "minisnaps" which is what the minisnap count field is for. a value of 1 is used for normal viewsnaps</p>
+    <p>for some vags (vertical angle glitches) it can be useful to walk forwards into the portal instead of backwards which is what the "180 degree vag sensitivity" is for. if you're not routing a vag then you may ignore its output</p>
+    <p>the formulae for viewsnaps are:<br> sensitivity = (desired_yaw - starting_yaw) / m_yaw for yaw <br>sensitivity = (desired_pitch - starting_pitch) / m_pitch for pitch<br>the default values for m_yaw and m_pitch in portal are 0.022 and cannot be changed</p>
+    <form>
+        <label for="starting_angle">starting yaw/pitch:</label>
+        <input id="starting_angle" oninput="calculate()" />
+        <br>
+        <label for="desired_angle">desired yaw/pitch:</label>
+        <input id="desired_angle" oninput="calculate()" />
+        <br>
+        <label for="minisnap_count">minisnap count:</label>
+        <input id="minisnap_count" oninput="calculate()" value="1" />
+        
+        <p id="error">&#8203;</p>
+        <p>change in angle: <span id="delta"></span></p>
+        <p>calculated sensitivity: <span id="viewsnap1"></span></p>
+        <p>180 degree vag sensitivity: <span id="viewsnap2"></span></p>
+        <p>bind for the viewsnap (requires sst!): <span id="bind"></span></p>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
