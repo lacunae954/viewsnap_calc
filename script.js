@@ -1,5 +1,7 @@
 const M_YAW = 0.022;
 
+calculate();
+
 function calculate() {
   const starting_input = document.getElementById("starting_angle").value;
   const desired_input = document.getElementById("desired_angle").value;
